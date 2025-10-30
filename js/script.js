@@ -1,13 +1,29 @@
 
-
+// initialize sketch board
 function createSketchBoard(size) {
 
-    const sketchContainer = document.querySelector('.sketch-container');
+    const sketchContainer = document.querySelector('.sketch-board');
 
-    for(let i = 1; i <= size; i++) {
-        const grid = document.createElement('div');
-        sketchContainer.appendChild(grid);
+    for (let i = 1; i <= size; i++) {
+        const xGrid = document.createElement('div');
+        xGrid.classList.add('x-grid');
+        sketchContainer.appendChild(xGrid);
+
+        for (let i = 1; i <= size; i++) {
+            const yGrid = document.createElement('div');
+            yGrid.classList.add('grid');
+            xGrid.appendChild(yGrid);
+        }
+        
     }
 }
-
 createSketchBoard(16);
+
+
+// change grid color to black on mouseover on each grid
+const grids = document.querySelectorAll('.grid');
+grids.forEach( grid => {
+    grid.addEventListener('mouseover', () => {
+        grid.style.backgroundColor = 'black'
+    });
+});

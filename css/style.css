@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+}
+
+.sketch-container {
+    width: 900px;
+    border-radius: 3em;
+    margin: auto;
+    background-color: aqua;
+    padding: 10px;
+}
+
+.sketch-board {
+    width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.x-grid {
+    display: flex;
+    width: 100%;
+}
+
+.x-grid div {
+    border: 1px solid gray;
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: white;
+}
