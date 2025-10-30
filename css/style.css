@@ -11,13 +11,16 @@ h1 {
     border-radius: 3em;
     margin: auto;
     background-color: aqua;
-    padding: 10px;
+    padding: 20px 50px;
+}
+
+.container {
+    display: flex;
+    gap: 20px;
 }
 
 .sketch-board {
     width: 800px;
-    margin: 0 auto;
-    padding: 20px;
 }
 
 .x-grid {
