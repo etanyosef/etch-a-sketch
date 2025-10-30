@@ -32,6 +32,9 @@ const sizeInput = document.querySelector('.grid-size');
 sizeInput.addEventListener('mouseup', getSize);
 function getSize() {
     let size = sizeInput.value;
+
+    const txtSize = document.querySelector('.text-size');
+    txtSize.textContent = size;
     
     // clean sketchboard
     const sketchBoard = document.querySelector('.sketch-board');
