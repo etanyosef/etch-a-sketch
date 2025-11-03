@@ -33,6 +33,25 @@ br {
     align-items: center;
 }
 
+.brush-color {
+    border: none;
+    padding: 0;
+    outline: none;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+.brush-color::-webkit-color-swatch {
+    border: none;
+    border-radius: 50%;
+}
+.brush-color:hover {
+    scale: 1.05;
+    transition: .3s ease-out;
+}
+
 .sketch-menu section {
     display: flex;
     flex-direction: column;
@@ -49,12 +68,11 @@ br {
     padding: 8px 15px;
     font-size: 1.2em;
     font-weight: 600;
+    width: 100%;
 }
 
 .sketch-menu button:hover {
-    background-color: antiquewhite;
-    border-color: antiquewhite;
-    color: rgb(0, 136, 255);
+    filter: opacity(.8);
 }
 
 button.active {
@@ -74,8 +92,9 @@ button.active {
     width: 100%;
 }
 
+
 .x-grid div {
-    border: 1px solid gray;
+    border: .5px solid gray;
     width: 100%;
     aspect-ratio: 1;
     background-color: white;
