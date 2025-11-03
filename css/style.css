@@ -1,16 +1,20 @@
 * {
     box-sizing: border-box;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 h1 {
     text-align: center;
 }
 
+br {
+    clear: both;
+}
+
 .sketch-container {
-    width: 1000px;
+    width: 1100px;
     border-radius: 2em;
     margin: 50px auto;
-    background-color: aqua;
     padding: 10px 50px;
 }
 
@@ -21,11 +25,42 @@ h1 {
 }
 
 .sketch-menu {
-    width: 20%;
+    width: 25%;
+    background-color: wheat;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.sketch-menu button {
+    border: 4px solid rgb(0, 136, 255);
+    color: rgb(0, 136, 255);
+    border-radius: 12px;
+    background-color: white;
+    cursor: pointer;
+    padding: 8px 15px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.sketch-menu button:hover {
+    background-color: antiquewhite;
+    border-color: antiquewhite;
+    color: rgb(0, 136, 255);
+}
+
+button.active {
+    background-color: rgb(0, 136, 255);
+    color: white;
 }
 
 .sketch-board {
-    width: 80%;
+    width: 75%;
+    padding: 10px;
+    background-color: wheat;
+    border-radius: 15px;
 }
 
 .x-grid {

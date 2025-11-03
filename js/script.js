@@ -1,8 +1,9 @@
 // set brush color
 const brushColor = document.querySelector('.brush-color');
 const txtColor = document.querySelector('.text-color');
-color = brushColor.value;
-txtColor.textContent = color;
+txtColor.textContent = brushColor.value;
+
+let brushMode = 'Color';
 
 
 // initialize sketch board
@@ -23,7 +24,7 @@ function createSketchBoard(size) {
         }   
     }
 
-    brush(color);
+    brush(brushColor.value);
 }
 createSketchBoard(16);
 
@@ -50,12 +51,31 @@ function getSize() {
 
 function brush(color) {
     // change grid color
-    const grids = document.querySelectorAll('.grid');
-    grids.forEach( grid => {
-        grid.addEventListener('mouseover', () => {
-            grid.style.backgroundColor = color;
+    if(brushMode === 'Random') {
+
+        const grids = document.querySelectorAll('.grid');
+        grids.forEach( grid => {
+            grid.addEventListener('mouseover', () => {
+                let red, green, blue;
+                red = Math.floor(Math.random() * 255);
+                green = Math.floor(Math.random() * 255);
+                blue = Math.floor(Math.random() * 255);
+                color = `rgb(${red}, ${green}, ${blue})`;
+                grid.style.backgroundColor = color;
+            });
         });
-    });
+
+    } else if(brushMode === 'Color') {
+
+        const grids = document.querySelectorAll('.grid');
+        grids.forEach( grid => {
+            grid.addEventListener('mouseover', () => {
+                grid.style.backgroundColor = color;
+            });
+        });
+
+    }
+
 }
 
 
@@ -63,4 +83,20 @@ function brush(color) {
 brushColor.addEventListener('input', () => {
     txtColor.textContent = brushColor.value;
     return brush(brushColor.value);
+});
+
+const btnColor = document.querySelector('.btn-color');
+btnColor.addEventListener('click', () => {
+    brushMode = 'Color';
+    brush(brushColor.value);
+    btnColor.classList.add('active');
+    btnRandomizeColor.classList.remove('active');
+})
+
+const btnRandomizeColor = document.querySelector('.btn-randomize-color');
+btnRandomizeColor.addEventListener('click', () => {
+    brushMode = 'Random';
+    brush();
+    btnColor.classList.remove('active');
+    btnRandomizeColor.classList.add('active');
 });
