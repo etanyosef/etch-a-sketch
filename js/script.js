@@ -1,3 +1,9 @@
+// set brush color
+const brushColor = document.querySelector('.brush-color');
+const txtColor = document.querySelector('.text-color');
+color = brushColor.value;
+txtColor.textContent = color;
+
 
 // initialize sketch board
 function createSketchBoard(size) {
@@ -17,7 +23,7 @@ function createSketchBoard(size) {
         }   
     }
 
-    brush('#000000');
+    brush(color);
 }
 createSketchBoard(16);
 
@@ -41,11 +47,10 @@ function getSize() {
     return createSketchBoard(size);
 }
 
+
 function brush(color) {
     // change grid color
     const grids = document.querySelectorAll('.grid');
-    const brushColor = document.querySelector('.brush-color');
-    color = brushColor.value;
     grids.forEach( grid => {
         grid.addEventListener('mouseover', () => {
             grid.style.backgroundColor = color;
@@ -55,9 +60,7 @@ function brush(color) {
 
 
 // set brush color everytime user change the color on color picker
-const brushColor = document.querySelector('.brush-color');
 brushColor.addEventListener('input', () => {
-    const txtColor = document.querySelector('.text-color');
     txtColor.textContent = brushColor.value;
     return brush(brushColor.value);
 });
