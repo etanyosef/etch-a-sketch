@@ -32,7 +32,7 @@ createSketchBoard(16);
 
 // set size based on range input
 const sizeInput = document.querySelector('.grid-size');
-sizeInput.addEventListener('mouseup', getSize);
+sizeInput.addEventListener('input', getSize);
 function getSize() {
     let size = sizeInput.value;
 
@@ -82,16 +82,20 @@ function brush(color) {
 // set brush color everytime user change the color on color picker
 brushColor.addEventListener('input', () => {
     txtColor.textContent = brushColor.value;
+    // when user select on color picker, automatically switch to color mode from random mode
+    colorMode();
     return brush(brushColor.value);
 });
 
 const btnColor = document.querySelector('.btn-color');
-btnColor.addEventListener('click', () => {
+btnColor.addEventListener('click', colorMode);
+
+function colorMode() {
     brushMode = 'Color';
     brush(brushColor.value);
     btnColor.classList.add('active');
     btnRandomizeColor.classList.remove('active');
-})
+}
 
 const btnRandomizeColor = document.querySelector('.btn-randomize-color');
 btnRandomizeColor.addEventListener('click', () => {

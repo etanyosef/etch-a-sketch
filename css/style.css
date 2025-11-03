@@ -31,6 +31,12 @@ br {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.sketch-menu section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 10px;
 }
 
@@ -58,9 +64,9 @@ button.active {
 
 .sketch-board {
     width: 75%;
-    padding: 10px;
+    padding: 15px;
     background-color: wheat;
-    border-radius: 15px;
+    border-radius: 20px;
 }
 
 .x-grid {
