@@ -7,9 +7,9 @@ h1 {
 }
 
 .sketch-container {
-    width: 1200px;
-    border-radius: 3em;
-    margin: 0 auto;
+    width: 1000px;
+    border-radius: 2em;
+    margin: 50px auto;
     background-color: aqua;
     padding: 10px 50px;
 }

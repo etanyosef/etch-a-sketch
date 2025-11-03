@@ -16,16 +16,16 @@ function createSketchBoard(size) {
             xGrid.appendChild(yGrid);
         }   
     }
-
-    // change grid color to black on mouseover on each grid
-    const grids = document.querySelectorAll('.grid');
-    grids.forEach( grid => {
-        grid.addEventListener('mouseover', () => {
-            grid.style.backgroundColor = 'black'
-        });
-    });
 }
 createSketchBoard(16);
+
+// change grid color to black on mouseover on each grid
+const grids = document.querySelectorAll('.grid');
+grids.forEach( grid => {
+    grid.addEventListener('mouseover', () => {
+        grid.style.backgroundColor = 'black'
+    });
+});
 
 // set size based on range input
 const sizeInput = document.querySelector('.grid-size');
@@ -44,3 +44,12 @@ function getSize() {
 
     return createSketchBoard(size);
 }
+
+function brush() {
+
+}
+
+const brushColor = document.querySelector('.brush-color');
+brushColor.addEventListener('change', () => {
+    console.log(brushColor.value)
+});
