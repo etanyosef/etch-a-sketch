@@ -62,7 +62,8 @@ function brush(color) {
                 blue = Math.floor(Math.random() * 255);
                 color = `rgb(${red}, ${green}, ${blue})`;
                 grid.style.backgroundColor = color;
-                    grid.style.removeProperty('filter');
+                // remove filter from inline css from grid
+                grid.style.removeProperty('filter');
             });
         });
 
@@ -72,7 +73,7 @@ function brush(color) {
         grids.forEach( grid => {
             grid.addEventListener('mouseover', () => {
                 grid.style.backgroundColor = color;
-                    grid.style.removeProperty('filter');
+                grid.style.removeProperty('filter');
             });
         });
 
@@ -98,7 +99,12 @@ function brush(color) {
 brushColor.addEventListener('input', () => {
     txtColor.textContent = brushColor.value;
     // when user select on color picker, automatically switch to color mode from random mode
-    colorMode();
+    // dont switch if user is in progressive darkening mode
+    if (brushMode === 'Progressive Darkening') {
+        progressiveDarkening();
+    } else {
+        colorMode();
+    }
     return brush(brushColor.value);
 });
 
