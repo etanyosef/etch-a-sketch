@@ -52,6 +52,10 @@ br {
     transition: .3s ease-out;
 }
 
+.sketch-menu {
+    padding: 0 10px;
+}
+
 .sketch-menu section {
     display: flex;
     flex-direction: column;
@@ -66,7 +70,7 @@ br {
     background-color: white;
     cursor: pointer;
     padding: 8px 15px;
-    font-size: 1.2em;
+    font-size: 1.1rem;
     font-weight: 600;
     width: 100%;
 }
@@ -90,6 +94,7 @@ button.active {
 .x-grid {
     display: flex;
     width: 100%;
+    background-color: white;
 }
 
 

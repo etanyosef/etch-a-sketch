@@ -74,6 +74,22 @@ function brush(color) {
             });
         });
 
+    } else if(brushMode === 'Progressive Darkening') {
+        let i = 0;
+        const grids = document.querySelectorAll('.grid');
+        grids.forEach( grid => {
+            grid.addEventListener('mouseover', () => {
+                grid.style.backgroundColor = color;
+                // remove filter opacity style if it reaches 0.90
+                if (i === 90) {
+                    grid.style.remove = 'filter';
+                } else {
+                    // add .10 opacity everytime the user mouseover a grid
+                    i =+ i + 10;
+                    grid.style.filter = `opacity(0.${i})`;
+                }
+            });
+        });
     }
 
 }
@@ -95,6 +111,7 @@ function colorMode() {
     brush(brushColor.value);
     btnColor.classList.add('active');
     btnRandomizeColor.classList.remove('active');
+    btnProgressiveDarkening.classList.remove('active');
 }
 
 const btnRandomizeColor = document.querySelector('.btn-randomize-color');
@@ -103,4 +120,15 @@ btnRandomizeColor.addEventListener('click', () => {
     brush();
     btnColor.classList.remove('active');
     btnRandomizeColor.classList.add('active');
+    btnProgressiveDarkening.classList.remove('active');
 });
+
+const btnProgressiveDarkening = document.querySelector('.btn-progressive-darkening');
+btnProgressiveDarkening.addEventListener('click', () => {
+    brushMode = 'Progressive Darkening';
+    brush(brushColor.value);
+    btnColor.classList.remove('active');
+    btnRandomizeColor.classList.remove('active');
+    btnProgressiveDarkening.classList.add('active');
+    console.log(brushMode);
+})
