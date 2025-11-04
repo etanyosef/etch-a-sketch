@@ -62,6 +62,7 @@ function brush(color) {
                 blue = Math.floor(Math.random() * 255);
                 color = `rgb(${red}, ${green}, ${blue})`;
                 grid.style.backgroundColor = color;
+                    grid.style.removeProperty('filter');
             });
         });
 
@@ -71,6 +72,7 @@ function brush(color) {
         grids.forEach( grid => {
             grid.addEventListener('mouseover', () => {
                 grid.style.backgroundColor = color;
+                    grid.style.removeProperty('filter');
             });
         });
 
@@ -79,15 +81,12 @@ function brush(color) {
         const grids = document.querySelectorAll('.grid');
         grids.forEach( grid => {
             grid.addEventListener('mouseover', () => {
-                grid.style.backgroundColor = color;
-                // remove filter opacity style if it reaches 0.90
-                if (i === 90) {
-                    grid.style.remove = 'filter';
-                } else {
-                    // add .10 opacity everytime the user mouseover a grid
+                // add .10 opacity everytime the user mouseover a grid until it reaches .90
+                if (i != 90) {
                     i =+ i + 10;
                     grid.style.filter = `opacity(0.${i})`;
                 }
+                grid.style.backgroundColor = color;
             });
         });
     }
@@ -124,11 +123,11 @@ btnRandomizeColor.addEventListener('click', () => {
 });
 
 const btnProgressiveDarkening = document.querySelector('.btn-progressive-darkening');
-btnProgressiveDarkening.addEventListener('click', () => {
+function progressiveDarkening() {
     brushMode = 'Progressive Darkening';
     brush(brushColor.value);
     btnColor.classList.remove('active');
     btnRandomizeColor.classList.remove('active');
     btnProgressiveDarkening.classList.add('active');
-    console.log(brushMode);
-})
+}
+btnProgressiveDarkening.addEventListener('click', progressiveDarkening);
